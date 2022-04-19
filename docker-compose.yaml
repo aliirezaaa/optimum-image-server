@@ -3,12 +3,11 @@ services:
   file-server:
     build: .
     volumes:
-      #set volume storage path
-      - /var/www/public/uploads:/home/files
+      - ${IMAGES_DIRECTORY}:/home/files
     restart: always
     ports:
       - "8081:8081"
     environment:
       DEBUG: project*
       #set base path. example /var/www/public/uploads/
-      FILE_SERVER_BASE_PATH: "/var/www/public/uploads"
+      FILE_SERVER_BASE_PATH: ${IMAGES_DIRECTORY}
